@@ -98,25 +98,25 @@
 
 
 
-  <meta name="description" content="近期了解了一下Sqlite数据库,便想把之前写的一个爬虫项目的数据库里添加Sqlite支持,一开始想着用EF去完成的,后面尝试过后,发现EF用起来并不是那么方便,就改成用Sqlite的ORM框架,这里采用的是sqlite-net-pcl,nuget查找sqlite-net-pcl并选择即可.">
-<meta name="keywords" content="C#,Sqlite">
+  <meta name="description" content="在代码中经常会遇到需要把对象复制一遍，或者把属性名相同的值复制一遍。">
+<meta name="keywords" content="C#,复制对象">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C#-在Winform中使用Sqlite">
-<meta property="og:url" content="http://blog.chcaty.cn/2018/12/11/C#-在Winform中使用Sqlite/index.html">
+<meta property="og:title" content="Csharp 复制对象的方式">
+<meta property="og:url" content="http://blog.chcaty.cn/2018/06/09/Csharp-通过表达式树复制对象/index.html">
 <meta property="og:site_name" content="小猫的代码之旅">
-<meta property="og:description" content="近期了解了一下Sqlite数据库,便想把之前写的一个爬虫项目的数据库里添加Sqlite支持,一开始想着用EF去完成的,后面尝试过后,发现EF用起来并不是那么方便,就改成用Sqlite的ORM框架,这里采用的是sqlite-net-pcl,nuget查找sqlite-net-pcl并选择即可.">
+<meta property="og:description" content="在代码中经常会遇到需要把对象复制一遍，或者把属性名相同的值复制一遍。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-11T15:28:46.808Z">
+<meta property="og:updated_time" content="2019-04-02T14:41:02.724Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C#-在Winform中使用Sqlite">
-<meta name="twitter:description" content="近期了解了一下Sqlite数据库,便想把之前写的一个爬虫项目的数据库里添加Sqlite支持,一开始想着用EF去完成的,后面尝试过后,发现EF用起来并不是那么方便,就改成用Sqlite的ORM框架,这里采用的是sqlite-net-pcl,nuget查找sqlite-net-pcl并选择即可.">
+<meta name="twitter:title" content="Csharp 复制对象的方式">
+<meta name="twitter:description" content="在代码中经常会遇到需要把对象复制一遍，或者把属性名相同的值复制一遍。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.chcaty.cn/2018/12/11/C#-在Winform中使用Sqlite/">
+  <link rel="canonical" href="http://blog.chcaty.cn/2018/06/09/Csharp-通过表达式树复制对象/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>C#-在Winform中使用Sqlite | 小猫的代码之旅</title>
+  <title>Csharp 复制对象的方式 | 小猫的代码之旅</title>
   
 
 
@@ -342,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2018/12/11/C#-在Winform中使用Sqlite/">
+    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2018/06/09/Csharp-通过表达式树复制对象/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="caty">
@@ -359,7 +359,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C#-在Winform中使用Sqlite
+          <h1 class="post-title" itemprop="name headline">Csharp 复制对象的方式
 
               
             
@@ -385,12 +385,24 @@
                 
               
 
-              <time title="创建时间：2018-12-11 22:48:20 / 修改时间：23:28:46" itemprop="dateCreated datePublished" datetime="2018-12-11T22:48:20+08:00">2018-12-11</time>
+              <time title="创建时间：2018-06-09 22:38:24" itemprop="dateCreated datePublished" datetime="2018-06-09T22:38:24+08:00">2018-06-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-02 22:41:02" itemprop="dateModified" datetime="2019-04-02T22:41:02+08:00">2019-04-02</time>
               
             
           </span>
@@ -426,8 +438,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/12/11/C#-在Winform中使用Sqlite/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/11/C#-在Winform中使用Sqlite/" itemprop="commentCount"></span>
+                <a href="/2018/06/09/Csharp-通过表达式树复制对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/09/Csharp-通过表达式树复制对象/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -456,7 +468,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.8k</span>
+                <span title="本文字数">2.3k</span>
               
 
               
@@ -470,7 +482,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -490,10 +502,23 @@
       
 
       
-        <p>近期了解了一下Sqlite数据库,便想把之前写的一个爬虫项目的数据库里添加Sqlite支持,一开始想着用EF去完成的,后面尝试过后,发现EF用起来并不是那么方便,就改成用Sqlite的ORM框架,这里采用的是sqlite-net-pcl,nuget查找sqlite-net-pcl并选择即可.<br><a id="more"></a></p>
-<h5 id="定义实体类"><a href="#定义实体类" class="headerlink" title="定义实体类"></a>定义实体类</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Book</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">PrimaryKey, AutoIncrement</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> BookId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> BookName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> BookLink &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> DownloadLink &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="定义数据库连接"><a href="#定义数据库连接" class="headerlink" title="定义数据库连接"></a>定义数据库连接</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BookSqliteDb</span> : <span class="title">SQLiteConnection</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//定义属性，便于外部访问数据表</span></span><br><span class="line">    <span class="keyword">public</span> TableQuery&lt;Book&gt; Books &#123; <span class="keyword">get</span> &#123; <span class="keyword">return</span> <span class="keyword">this</span>.Table&lt;Book&gt;(); &#125; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BookSqliteDb</span>(<span class="params"><span class="keyword">string</span> dbPath</span>) : <span class="title">base</span>(<span class="params">dbPath</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//创建数据表</span></span><br><span class="line">        CreateTable&lt;Book&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义Sqlite文件路径</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">string</span> dbPath = <span class="string">$"<span class="subst">&#123;Environment.CurrentDirectory&#125;</span>\\Kindle.db"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//增加</span></span><br><span class="line">List&lt;Book&gt; books = <span class="keyword">new</span> List&lt;Book&gt;()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">new</span> Book() &#123; BookId = <span class="string">"1"</span>, BookName = <span class="string">"将夜"</span>, BookLink = <span class="string">"www.baidu.com"</span>, DownloadLink = <span class="string">"www.baidu.com"</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> Kindledb = <span class="keyword">new</span> BookSqliteDb(dbPath))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> count = Kindledb.InsertAll(books);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改</span></span><br><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> Kindledb = <span class="keyword">new</span> BookSqliteDb(dbPath))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> book = Kindledb.Books.FirstOrDefault(x =&gt; x.BookName == <span class="string">"将夜"</span>);</span><br><span class="line">    <span class="keyword">if</span> (book != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        book.BookLink = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">int</span> count = Kindledb.Update(book);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> Kindledb = <span class="keyword">new</span> BookSqliteDb(dbPath))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> count = Kindledb.Books.Delete(x =&gt; x.BookName == <span class="string">"将夜"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查询</span></span><br><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> Kindledb = <span class="keyword">new</span> BookSqliteDb(dbPath))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> books = Kindledb.Books.Where(x =&gt; x.BookName == <span class="string">"将夜"</span>).OrderByDescending(x =&gt; x.BookId).ToList();</span><br><span class="line">    <span class="keyword">string</span> str = <span class="string">$"<span class="subst">&#123;DateTime.Now&#125;</span>, 查到<span class="subst">&#123;books.Count&#125;</span>条记录"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>在代码中经常会遇到需要把对象复制一遍，或者把属性名相同的值复制一遍。<br><a id="more"></a></p>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>以People为例<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">People</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> IdCard &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>手动赋值</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">People p = <span class="keyword">new</span> People() &#123;IdCrad = <span class="string">"445221XXXXXXXX"</span>, Name=<span class="string">"caty"</span>, Age=<span class="number">21</span> &#125;;</span><br><span class="line">People h = <span class="keyword">new</span> People() &#123;IdCrad = p.IdCard, Name = p.Name, Age = p.Age &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>反射</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> TOut TransReflection&lt;TIn, TOut&gt;(TIn tIn)</span><br><span class="line">&#123;</span><br><span class="line">    TOut tOut = Activator.CreateInstance&lt;TOut&gt;();</span><br><span class="line">    <span class="keyword">var</span> tInType = tIn.GetType();</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> itemOut <span class="keyword">in</span> tOut.GetType().GetProperties())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> itemIn = tInType.GetProperty(itemOut.Name); ;</span><br><span class="line">        <span class="keyword">if</span> (itemIn != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            itemOut.SetValue(tOut, itemIn.GetValue(tIn));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tOut;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">People pp = TransReflection&lt;People, People&gt;(p);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>序列化<br>需引入Newtonsoft.Json 包</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">People ss= JsonConvert.DeserializeObject&lt;People&gt;(JsonConvert.SerializeObject(s));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表达式树</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public static class TransExpression&lt;TIn, TOut&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> Func&lt;TIn, TOut&gt; cache = GetFunc();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Func&lt;TIn, TOut&gt; <span class="title">GetFunc</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ParameterExpression parameterExpression = Expression.Parameter(<span class="keyword">typeof</span>(TIn), <span class="string">"p"</span>);</span><br><span class="line">        List&lt;MemberBinding&gt; memberBindingList = <span class="keyword">new</span> List&lt;MemberBinding&gt;();</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="function"><span class="keyword">var</span> item <span class="keyword">in</span> <span class="title">typeof</span>(<span class="params">TOut</span>).<span class="title">GetProperties</span>(<span class="params"></span>))</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">　　　　　　　<span class="keyword">if</span> (!item.CanWrite)</span><br><span class="line">　　　　　　　　    <span class="keyword">continue</span>;</span><br><span class="line">            MemberExpression property = Expression.Property(parameterExpression, <span class="keyword">typeof</span>(TIn).GetProperty(item.Name));</span><br><span class="line">            MemberBinding memberBinding = Expression.Bind(item, property);</span><br><span class="line">            memberBindingList.Add(memberBinding);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        MemberInitExpression memberInitExpression = Expression.MemberInit(Expression.New(<span class="keyword">typeof</span>(TOut)), memberBindingList.ToArray());</span><br><span class="line">        Expression&lt;Func&lt;TIn, TOut&gt;&gt; lambda = Expression.Lambda&lt;Func&lt;TIn, TOut&gt;&gt;(memberInitExpression, <span class="keyword">new</span> ParameterExpression[] &#123; parameterExpression &#125;);</span><br><span class="line">        <span class="keyword">return</span> lambda.Compile();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TOut <span class="title">Trans</span>(<span class="params">TIn tIn</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cache(tIn);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">People pp = TransExpression&lt;People,People&gt;,Trans(p);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
       
     </div>
 
@@ -518,7 +543,7 @@
           
             <a href="/tags/C/" rel="tag"># C#</a>
           
-            <a href="/tags/Sqlite/" rel="tag"># Sqlite</a>
+            <a href="/tags/复制对象/" rel="tag"># 复制对象</a>
           
         </div>
       
@@ -531,8 +556,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/21/Asp-Net-Core-Web-API的先进架构/" rel="next" title="Asp.Net Core Web API的先进架构">
-                <i class="fa fa-chevron-left"></i> Asp.Net Core Web API的先进架构
+              <a href="/2018/06/08/Asp-Net-Core-REST-API基础/" rel="next" title="Asp.Net Core REST API基础">
+                <i class="fa fa-chevron-left"></i> Asp.Net Core REST API基础
               </a>
             
           </div>
@@ -541,8 +566,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/21/Net-Core-从零开始搭建框架(一)/" rel="prev" title=".Net Core-从零开始搭建框架(一)">
-                .Net Core-从零开始搭建框架(一) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/10/EF-Core实现DB-First和Code-First/" rel="prev" title="EF Core实现DB First和Code First">
+                EF Core实现DB First和Code First <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -786,7 +811,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义实体类"><span class="nav-number">1.</span> <span class="nav-text">定义实体类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#定义数据库连接"><span class="nav-number">2.</span> <span class="nav-text">定义数据库连接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#调用"><span class="nav-number">3.</span> <span class="nav-text">调用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方法"><span class="nav-number">1.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
             
 
           </div>

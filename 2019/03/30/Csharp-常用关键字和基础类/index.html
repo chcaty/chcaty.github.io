@@ -98,25 +98,25 @@
 
 
 
-  <meta name="description" content="在代码中经常会遇到需要把对象复制一遍，或者把属性名相同的值复制一遍。">
-<meta name="keywords" content="C#,复制对象">
+  <meta name="description" content="abstract关键字-抽象类abstract 关键字可以和类，属性，方法，索引器以及事件一起使用。在类声明中使用abstract关键字以指示某个类只能是其他类的基类">
+<meta name="keywords" content="基础,C#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C# 复制对象的方式">
-<meta property="og:url" content="http://blog.chcaty.cn/2018/06/09/C#-通过表达式树复制对象/index.html">
+<meta property="og:title" content="Csharp 常用关键字和基础类">
+<meta property="og:url" content="http://blog.chcaty.cn/2019/03/30/Csharp-常用关键字和基础类/index.html">
 <meta property="og:site_name" content="小猫的代码之旅">
-<meta property="og:description" content="在代码中经常会遇到需要把对象复制一遍，或者把属性名相同的值复制一遍。">
+<meta property="og:description" content="abstract关键字-抽象类abstract 关键字可以和类，属性，方法，索引器以及事件一起使用。在类声明中使用abstract关键字以指示某个类只能是其他类的基类">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-09T14:59:05.468Z">
+<meta property="og:updated_time" content="2019-04-02T14:40:41.097Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C# 复制对象的方式">
-<meta name="twitter:description" content="在代码中经常会遇到需要把对象复制一遍，或者把属性名相同的值复制一遍。">
+<meta name="twitter:title" content="Csharp 常用关键字和基础类">
+<meta name="twitter:description" content="abstract关键字-抽象类abstract 关键字可以和类，属性，方法，索引器以及事件一起使用。在类声明中使用abstract关键字以指示某个类只能是其他类的基类">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.chcaty.cn/2018/06/09/C#-通过表达式树复制对象/">
+  <link rel="canonical" href="http://blog.chcaty.cn/2019/03/30/Csharp-常用关键字和基础类/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>C# 复制对象的方式 | 小猫的代码之旅</title>
+  <title>Csharp 常用关键字和基础类 | 小猫的代码之旅</title>
   
 
 
@@ -342,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2018/06/09/C#-通过表达式树复制对象/">
+    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2019/03/30/Csharp-常用关键字和基础类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="caty">
@@ -359,7 +359,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C# 复制对象的方式
+          <h1 class="post-title" itemprop="name headline">Csharp 常用关键字和基础类
 
               
             
@@ -385,12 +385,24 @@
                 
               
 
-              <time title="创建时间：2018-06-09 22:38:24 / 修改时间：22:59:05" itemprop="dateCreated datePublished" datetime="2018-06-09T22:38:24+08:00">2018-06-09</time>
+              <time title="创建时间：2019-03-30 23:41:06" itemprop="dateCreated datePublished" datetime="2019-03-30T23:41:06+08:00">2019-03-30</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-02 22:40:41" itemprop="dateModified" datetime="2019-04-02T22:40:41+08:00">2019-04-02</time>
               
             
           </span>
@@ -426,8 +438,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/06/09/C#-通过表达式树复制对象/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/06/09/C#-通过表达式树复制对象/" itemprop="commentCount"></span>
+                <a href="/2019/03/30/Csharp-常用关键字和基础类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/30/Csharp-常用关键字和基础类/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -456,7 +468,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.3k</span>
+                <span title="本文字数">2.5k</span>
               
 
               
@@ -490,22 +502,303 @@
       
 
       
-        <p>在代码中经常会遇到需要把对象复制一遍，或者把属性名相同的值复制一遍。<br><a id="more"></a></p>
-<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>以People为例<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">People</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> IdCard &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> Age &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li><p>手动赋值</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">People p = <span class="keyword">new</span> People() &#123;IdCrad = <span class="string">"445221XXXXXXXX"</span>, Name=<span class="string">"caty"</span>, Age=<span class="number">21</span> &#125;;</span><br><span class="line">People h = <span class="keyword">new</span> People() &#123;IdCrad = p.IdCard, Name = p.Name, Age = p.Age &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>反射</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> TOut TransReflection&lt;TIn, TOut&gt;(TIn tIn)</span><br><span class="line">&#123;</span><br><span class="line">    TOut tOut = Activator.CreateInstance&lt;TOut&gt;();</span><br><span class="line">    <span class="keyword">var</span> tInType = tIn.GetType();</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> itemOut <span class="keyword">in</span> tOut.GetType().GetProperties())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> itemIn = tInType.GetProperty(itemOut.Name); ;</span><br><span class="line">        <span class="keyword">if</span> (itemIn != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            itemOut.SetValue(tOut, itemIn.GetValue(tIn));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tOut;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">People pp = TransReflection&lt;People, People&gt;(p);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>序列化<br>需引入Newtonsoft.Json 包</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">People ss= JsonConvert.DeserializeObject&lt;People&gt;(JsonConvert.SerializeObject(s));</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表达式树</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public static class TransExpression&lt;TIn, TOut&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> Func&lt;TIn, TOut&gt; cache = GetFunc();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Func&lt;TIn, TOut&gt; <span class="title">GetFunc</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ParameterExpression parameterExpression = Expression.Parameter(<span class="keyword">typeof</span>(TIn), <span class="string">"p"</span>);</span><br><span class="line">        List&lt;MemberBinding&gt; memberBindingList = <span class="keyword">new</span> List&lt;MemberBinding&gt;();</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="function"><span class="keyword">var</span> item <span class="keyword">in</span> <span class="title">typeof</span>(<span class="params">TOut</span>).<span class="title">GetProperties</span>(<span class="params"></span>))</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">　　　　　　　<span class="keyword">if</span> (!item.CanWrite)</span><br><span class="line">　　　　　　　　    <span class="keyword">continue</span>;</span><br><span class="line">            MemberExpression property = Expression.Property(parameterExpression, <span class="keyword">typeof</span>(TIn).GetProperty(item.Name));</span><br><span class="line">            MemberBinding memberBinding = Expression.Bind(item, property);</span><br><span class="line">            memberBindingList.Add(memberBinding);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        MemberInitExpression memberInitExpression = Expression.MemberInit(Expression.New(<span class="keyword">typeof</span>(TOut)), memberBindingList.ToArray());</span><br><span class="line">        Expression&lt;Func&lt;TIn, TOut&gt;&gt; lambda = Expression.Lambda&lt;Func&lt;TIn, TOut&gt;&gt;(memberInitExpression, <span class="keyword">new</span> ParameterExpression[] &#123; parameterExpression &#125;);</span><br><span class="line">        <span class="keyword">return</span> lambda.Compile();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TOut <span class="title">Trans</span>(<span class="params">TIn tIn</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cache(tIn);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">People pp = TransExpression&lt;People,People&gt;,Trans(p);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+        <h4 id="abstract关键字-抽象类"><a href="#abstract关键字-抽象类" class="headerlink" title="abstract关键字-抽象类"></a>abstract关键字-抽象类</h4><p>abstract 关键字可以和类，属性，方法，索引器以及事件一起使用。在类声明中使用abstract关键字以指示某个类只能是其他类的基类<br><a id="more"></a></p>
+<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><ul>
+<li>抽象类不能实例化</li>
+<li>抽象类可以包含抽象方法和抽象访问器</li>
+<li>抽象类不能被继承</li>
+<li>从抽象类派生的非抽象类必须包括继承的所有抽象方法和抽象访问器的实现</li>
+</ul>
+<h4 id="base关键字-从派生类中访问基类的成员"><a href="#base关键字-从派生类中访问基类的成员" class="headerlink" title="base关键字-从派生类中访问基类的成员"></a>base关键字-从派生类中访问基类的成员</h4><p>base关键字用于从派生类中访问基类的成员</p>
+<h5 id="使用范围"><a href="#使用范围" class="headerlink" title="使用范围"></a>使用范围</h5><ul>
+<li>调用基类上已被其他方法重写的方法</li>
+<li>指定创建派生类实例时应调用的基类基类构造函数</li>
+</ul>
+<h4 id="Console类-控制台中的输入流，输出流和错误流"><a href="#Console类-控制台中的输入流，输出流和错误流" class="headerlink" title="Console类-控制台中的输入流，输出流和错误流"></a>Console类-控制台中的输入流，输出流和错误流</h4><p>Console类表示控制台应用程序的标准输入流。输出流和错误流，无法继承此类</p>
+<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ForeGroundColor</td>
+<td style="text-align:center">获取或设置控制台的前景色</td>
+</tr>
+<tr>
+<td style="text-align:center">BackgroundColor</td>
+<td style="text-align:center">获取或设置控制台的背景色</td>
+</tr>
+<tr>
+<td style="text-align:center">BufferHeight</td>
+<td style="text-align:center">获取或设置缓冲区高度</td>
+</tr>
+<tr>
+<td style="text-align:center">BufferWidth</td>
+<td style="text-align:center">获取或设置缓冲区宽度</td>
+</tr>
+<tr>
+<td style="text-align:center">CapsLock</td>
+<td style="text-align:center">获取一个值，该值指示CapsLock键盘切换键是打开的还是关闭的</td>
+</tr>
+<tr>
+<td style="text-align:center">NumberLock</td>
+<td style="text-align:center">获取一个值，该值指示NumLock键盘切换键是打开的还是关闭的</td>
+</tr>
+<tr>
+<td style="text-align:center">KeyAvailable</td>
+<td style="text-align:center">获取一个值，该值指示按键操作在输入流是否可用</td>
+</tr>
+<tr>
+<td style="text-align:center">CursorTop</td>
+<td style="text-align:center">获取或设置光标在缓冲区中的行位置</td>
+</tr>
+<tr>
+<td style="text-align:center">CursorLeft</td>
+<td style="text-align:center">获取或设置光标在缓冲区中的列位置</td>
+</tr>
+<tr>
+<td style="text-align:center">CursorSize</td>
+<td style="text-align:center">获取或设置光标在字符单元格中的高度</td>
+</tr>
+<tr>
+<td style="text-align:center">CursorVisible</td>
+<td style="text-align:center">获取或设置光标是否可见</td>
+</tr>
+<tr>
+<td style="text-align:center">In</td>
+<td style="text-align:center">获取标准输入流</td>
+</tr>
+<tr>
+<td style="text-align:center">Out</td>
+<td style="text-align:center">获取标准输出流</td>
+</tr>
+<tr>
+<td style="text-align:center">Error</td>
+<td style="text-align:center">获取标准错误输出流</td>
+</tr>
+<tr>
+<td style="text-align:center">InputEncoding</td>
+<td style="text-align:center">获取或设置控制台用于读取输入的编码</td>
+</tr>
+<tr>
+<td style="text-align:center">OutEncoding</td>
+<td style="text-align:center">获取或设置控制台用于写入输出的编码</td>
+</tr>
+<tr>
+<td style="text-align:center">LargestWindowHeight</td>
+<td style="text-align:center">根据当前字体和屏幕分辨率获取控制台窗口可能有的最大行数</td>
+</tr>
+<tr>
+<td style="text-align:center">LargestWindowWidth</td>
+<td style="text-align:center">根据当前字体和屏幕分辨率获取控制台窗口可能有的最大列数</td>
+</tr>
+<tr>
+<td style="text-align:center">Title</td>
+<td style="text-align:center">获取或设置要显示在控制台标题栏中的标题</td>
+</tr>
+<tr>
+<td style="text-align:center">TreatControlCAsInput</td>
+<td style="text-align:center">获取或设置一个值，该值指示是将修改键【Control】和控制台键【C】的组合（Ctrl+C）视为普通输入，还是视为由操作系统处理的中断</td>
+</tr>
+<tr>
+<td style="text-align:center">WindowHeight</td>
+<td style="text-align:center">获取或设置控制台窗口区域的高度</td>
+</tr>
+<tr>
+<td style="text-align:center">WindowWidth</td>
+<td style="text-align:center">获取或设置控制台窗口区域的宽度</td>
+</tr>
+<tr>
+<td style="text-align:center">WindowLeft</td>
+<td style="text-align:center">获取或设置控制台窗口区域的最左边相对于屏幕缓冲区的位置</td>
+</tr>
+<tr>
+<td style="text-align:center">WindowTop</td>
+<td style="text-align:center">获取或设置控制台窗口区域的最顶部相对于屏幕缓冲区的位置</td>
+</tr>
+</tbody>
+</table>
+<h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Beep</td>
+<td style="text-align:center">通过控制台扬声器播放提示音</td>
+</tr>
+<tr>
+<td style="text-align:center">Clear</td>
+<td style="text-align:center">清除控制台缓冲区和夏国英的控制台窗口的显示信息</td>
+</tr>
+<tr>
+<td style="text-align:center">MoveBufferArea</td>
+<td style="text-align:center">将屏幕缓冲区的制定源区域复制到指定的目标区域</td>
+</tr>
+<tr>
+<td style="text-align:center">OpenStandarError</td>
+<td style="text-align:center">获取标准错误流</td>
+</tr>
+<tr>
+<td style="text-align:center">OpenStandarInput</td>
+<td style="text-align:center">获取标准输入流</td>
+</tr>
+<tr>
+<td style="text-align:center">OpenStandarOutput</td>
+<td style="text-align:center">获取标注输出流</td>
+</tr>
+<tr>
+<td style="text-align:center">Read</td>
+<td style="text-align:center">从标准输入流读取下一个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">ReadKey</td>
+<td style="text-align:center">获取用户按下的下一个字符或功能键</td>
+</tr>
+<tr>
+<td style="text-align:center">ReadLine</td>
+<td style="text-align:center">从标准输入流读取下一行字符</td>
+</tr>
+<tr>
+<td style="text-align:center">ReadColor</td>
+<td style="text-align:center">将控制台的前景色和背景色设置为默认值</td>
+</tr>
+<tr>
+<td style="text-align:center">SetBufferSize</td>
+<td style="text-align:center">将屏幕缓冲区的高度和宽度设置为指定值</td>
+</tr>
+<tr>
+<td style="text-align:center">SetCursorPosition</td>
+<td style="text-align:center">设置光标位置</td>
+</tr>
+<tr>
+<td style="text-align:center">SetError</td>
+<td style="text-align:center">将Error属性设置为指定TextWriter对象</td>
+</tr>
+<tr>
+<td style="text-align:center">SetIn</td>
+<td style="text-align:center">将In属性设置为指定TextWriter对象</td>
+</tr>
+<tr>
+<td style="text-align:center">SetOut</td>
+<td style="text-align:center">将Out属性设置为指定TextWriter对象</td>
+</tr>
+<tr>
+<td style="text-align:center">SetWindowPosition</td>
+<td style="text-align:center">设置控制台窗口相对于屏幕缓冲区的位置</td>
+</tr>
+<tr>
+<td style="text-align:center">SetWindowSize</td>
+<td style="text-align:center">将控制台窗口的高度和宽度设置为指定值</td>
+</tr>
+<tr>
+<td style="text-align:center">Write</td>
+<td style="text-align:center">将指定值的文本表示形式写入标准输出流</td>
+</tr>
+<tr>
+<td style="text-align:center">WriteLine</td>
+<td style="text-align:center">将指定的数据（后跟当前行终止符）表示形式写入标准输出流</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Convert类-类型转换"><a href="#Convert类-类型转换" class="headerlink" title="Convert类-类型转换"></a>Convert类-类型转换</h4><p>Convert类用于将一个基本数据类型转换为另一个基本数据类型</p>
+<h5 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h5><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FromBase64CharArray</td>
+<td style="text-align:center">将Unicode字符数组的子集转换成等效成等效的8位无符号整数数组，参数指定输入数组的子集及要转换的元素数</td>
+</tr>
+<tr>
+<td style="text-align:center">FromBase64String</td>
+<td style="text-align:center">将指定的String转换成等效成等效的8位无符号整数数组</td>
+</tr>
+<tr>
+<td style="text-align:center">GetHashCode</td>
+<td style="text-align:center">用作特定类型的哈希函数</td>
+</tr>
+<tr>
+<td style="text-align:center">ToBase64CharArray</td>
+<td style="text-align:center">将8位无符号整数数组的子集转换为用Base64数字编码的Unicode字符数组的等价子集</td>
+</tr>
+<tr>
+<td style="text-align:center">ToBase64String</td>
+<td style="text-align:center">将8位无符号整数数组的值转换为与其等效的String表示形式</td>
+</tr>
+<tr>
+<td style="text-align:center">ToBoolean</td>
+<td style="text-align:center">将指定的值转换为等效的布尔值</td>
+</tr>
+<tr>
+<td style="text-align:center">ToByte</td>
+<td style="text-align:center">将指定的值转换为8位无符号整数</td>
+</tr>
+<tr>
+<td style="text-align:center">ToChar</td>
+<td style="text-align:center">将指定的值转换为Unicode字符</td>
+</tr>
+<tr>
+<td style="text-align:center">ToDateTime</td>
+<td style="text-align:center">将指定的值转换为DateTime</td>
+</tr>
+<tr>
+<td style="text-align:center">ToDecimal</td>
+<td style="text-align:center">将指定的值转换为Decimal数字</td>
+</tr>
+<tr>
+<td style="text-align:center">ToDouble</td>
+<td style="text-align:center">将指定的值转换为双精度浮点数</td>
+</tr>
+<tr>
+<td style="text-align:center">ToInt16</td>
+<td style="text-align:center">将指定的值转换为16位有符号整数</td>
+</tr>
+<tr>
+<td style="text-align:center">ToInt32</td>
+<td style="text-align:center">将指定的值转换为32位有符号整数</td>
+</tr>
+<tr>
+<td style="text-align:center">ToInt64</td>
+<td style="text-align:center">将指定的值转换为64位有符号整数</td>
+</tr>
+<tr>
+<td style="text-align:center">ToSByte</td>
+<td style="text-align:center">将指定的值转换为8位有符号整数</td>
+</tr>
+<tr>
+<td style="text-align:center">ToSingle</td>
+<td style="text-align:center">将指定的值转换为单精度浮点数</td>
+</tr>
+<tr>
+<td style="text-align:center">ToString</td>
+<td style="text-align:center">将指定的值转换为与其等效的String表示形式</td>
+</tr>
+<tr>
+<td style="text-align:center">ToUInt16</td>
+<td style="text-align:center">将指定的值转换为16位有符号整数</td>
+</tr>
+<tr>
+<td style="text-align:center">ToUInt32</td>
+<td style="text-align:center">将指定的值转换为32位有符号整数</td>
+</tr>
+<tr>
+<td style="text-align:center">ToUInt64</td>
+<td style="text-align:center">将指定的值转换为64位有符号整数</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Dispose方法-释放资源"><a href="#Dispose方法-释放资源" class="headerlink" title="Dispose方法-释放资源"></a>Dispose方法-释放资源</h4><p>Dispose方法用于执行与释放或重置非托管资源相关的应用程序定义的任务</p>
 
       
     </div>
@@ -529,9 +822,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C#</a>
+            <a href="/tags/基础/" rel="tag"># 基础</a>
           
-            <a href="/tags/复制对象/" rel="tag"># 复制对象</a>
+            <a href="/tags/C/" rel="tag"># C#</a>
           
         </div>
       
@@ -544,8 +837,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/08/Asp-Net-Core-REST-API基础/" rel="next" title="Asp.Net Core REST API基础">
-                <i class="fa fa-chevron-left"></i> Asp.Net Core REST API基础
+              <a href="/2019/03/28/值类型与引用类型/" rel="next" title="值类型与引用类型">
+                <i class="fa fa-chevron-left"></i> 值类型与引用类型
               </a>
             
           </div>
@@ -554,8 +847,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/10/EF-Core实现DB-First和Code-First/" rel="prev" title="EF Core实现DB First和Code First">
-                EF Core实现DB First和Code First <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/02/Csharp-Math类和字符串处理/" rel="prev" title="Csharp Math类和字符串处理">
+                Csharp Math类和字符串处理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -799,7 +1092,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#解决方法"><span class="nav-number">1.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#abstract关键字-抽象类"><span class="nav-number">1.</span> <span class="nav-text">abstract关键字-抽象类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特性"><span class="nav-number">1.1.</span> <span class="nav-text">特性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#base关键字-从派生类中访问基类的成员"><span class="nav-number">2.</span> <span class="nav-text">base关键字-从派生类中访问基类的成员</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用范围"><span class="nav-number">2.1.</span> <span class="nav-text">使用范围</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Console类-控制台中的输入流，输出流和错误流"><span class="nav-number">3.</span> <span class="nav-text">Console类-控制台中的输入流，输出流和错误流</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#属性"><span class="nav-number">3.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法"><span class="nav-number">3.2.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Convert类-类型转换"><span class="nav-number">4.</span> <span class="nav-text">Convert类-类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法-1"><span class="nav-number">4.1.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dispose方法-释放资源"><span class="nav-number">5.</span> <span class="nav-text">Dispose方法-释放资源</span></a></li></ol></div>
             
 
           </div>
