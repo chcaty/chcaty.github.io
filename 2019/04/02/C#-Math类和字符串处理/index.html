@@ -98,25 +98,25 @@
 
 
 
-  <meta name="description" content="抽象工厂的定义抽象工厂提供了一个接口,这个接口可以创建一族相关或依赖的对象而无需指明它们具体的类.">
-<meta name="keywords" content=".Net Core,设计模式">
+  <meta name="description" content="Math类">
+<meta name="keywords" content="基础,C#">
 <meta property="og:type" content="article">
-<meta property="og:title" content=".Net Core 抽象工厂模式">
-<meta property="og:url" content="http://blog.chcaty.cn/2018/04/16/Net-Core-抽象工厂模式/index.html">
+<meta property="og:title" content="C#-Math类和字符串处理">
+<meta property="og:url" content="http://blog.chcaty.cn/2019/04/02/C#-Math类和字符串处理/index.html">
 <meta property="og:site_name" content="小猫的代码之旅">
-<meta property="og:description" content="抽象工厂的定义抽象工厂提供了一个接口,这个接口可以创建一族相关或依赖的对象而无需指明它们具体的类.">
+<meta property="og:description" content="Math类">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-16T13:11:22.253Z">
+<meta property="og:updated_time" content="2019-04-02T14:29:58.951Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=".Net Core 抽象工厂模式">
-<meta name="twitter:description" content="抽象工厂的定义抽象工厂提供了一个接口,这个接口可以创建一族相关或依赖的对象而无需指明它们具体的类.">
+<meta name="twitter:title" content="C#-Math类和字符串处理">
+<meta name="twitter:description" content="Math类">
 
 
 
 
 
 
-  <link rel="canonical" href="http://blog.chcaty.cn/2018/04/16/Net-Core-抽象工厂模式/">
+  <link rel="canonical" href="http://blog.chcaty.cn/2019/04/02/C#-Math类和字符串处理/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>.Net Core 抽象工厂模式 | 小猫的代码之旅</title>
+  <title>C#-Math类和字符串处理 | 小猫的代码之旅</title>
   
 
 
@@ -342,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2018/04/16/Net-Core-抽象工厂模式/">
+    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2019/04/02/C#-Math类和字符串处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="caty">
@@ -359,7 +359,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">.Net Core 抽象工厂模式
+          <h1 class="post-title" itemprop="name headline">C#-Math类和字符串处理
 
               
             
@@ -385,7 +385,7 @@
                 
               
 
-              <time title="创建时间：2018-04-16 20:03:13 / 修改时间：21:11:22" itemprop="dateCreated datePublished" datetime="2018-04-16T20:03:13+08:00">2018-04-16</time>
+              <time title="创建时间：2019-04-02 22:27:45 / 修改时间：22:29:58" itemprop="dateCreated datePublished" datetime="2019-04-02T22:27:45+08:00">2019-04-02</time>
             
 
             
@@ -407,7 +407,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Net-Core/" itemprop="url" rel="index"><span itemprop="name">.Net Core</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a></span>
 
                 
                 
@@ -426,8 +426,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/04/16/Net-Core-抽象工厂模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/16/Net-Core-抽象工厂模式/" itemprop="commentCount"></span>
+                <a href="/2019/04/02/C#-Math类和字符串处理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/02/C#-Math类和字符串处理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -456,7 +456,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.2k</span>
+                <span title="本文字数">5</span>
               
 
               
@@ -470,7 +470,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -490,16 +490,7 @@
       
 
       
-        <h5 id="抽象工厂的定义"><a href="#抽象工厂的定义" class="headerlink" title="抽象工厂的定义"></a>抽象工厂的定义</h5><p>抽象工厂提供了一个接口,这个接口可以创建一族相关或依赖的对象而无需指明它们具体的类.<br><a id="more"></a></p>
-<h5 id="工厂方法和抽象工厂的比较"><a href="#工厂方法和抽象工厂的比较" class="headerlink" title="工厂方法和抽象工厂的比较"></a>工厂方法和抽象工厂的比较</h5><p>工厂方法是通过继承来实现创建对象工作的,而抽象工厂则是通过组合的方法.<br>工厂方法是让子类来创建对象,客户只需要知道抽象类,子类做具体的实现,解耦.<br>抽象工厂提供了一个可以创建一族产品的抽象类,这个类的实现类/子类决定产品是如何产出的,也是解耦.<br>抽象工厂的优点是:可以创建一族相关的产品.缺点是它的接口比较大,如果添加了产品需要改接口.<br>而工厂方法只负责生产一个产品.<br>抽象工厂也经常使用工厂方法来实现具体的工厂.<br>而工厂方法也经常使用抽象的创造者,它来使用子类创建出的具体产品.</p>
-<h5 id="Net-Core实现抽象工厂"><a href="#Net-Core实现抽象工厂" class="headerlink" title=".Net Core实现抽象工厂"></a>.Net Core实现抽象工厂</h5><h6 id="IGredient-cs"><a href="#IGredient-cs" class="headerlink" title="IGredient.cs"></a>IGredient.cs</h6><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">AbtractFactoryPattern.Abstractions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IGredient</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="ICheese-cs"><a href="#ICheese-cs" class="headerlink" title="ICheese.cs"></a>ICheese.cs</h6><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">AbtractFactoryPattern.Abstractions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ICheese</span> : <span class="title">IGredient</span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="IClams-cs"><a href="#IClams-cs" class="headerlink" title="IClams.cs"></a>IClams.cs</h6><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">AbtractFactoryPattern.Abstractions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IClams</span> : <span class="title">IGredient</span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="IDough-cs"><a href="#IDough-cs" class="headerlink" title="IDough.cs"></a>IDough.cs</h6><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">AbtractFactoryPattern.Abstractions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IDough</span> : <span class="title">IGredient</span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="ISauce-cs"><a href="#ISauce-cs" class="headerlink" title="ISauce.cs"></a>ISauce.cs</h6><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">AbtractFactoryPattern.Abstractions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ISauce</span> : <span class="title">IGredient</span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="IPizzalngredientFactory-cs"><a href="#IPizzalngredientFactory-cs" class="headerlink" title="IPizzalngredientFactory.cs"></a>IPizzalngredientFactory.cs</h6><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">AbtractFactoryPattern.Abstractions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IPizzalngredientFactory</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">IDough <span class="title">CreateDough</span>(<span class="params"></span>)</span>;</span><br><span class="line">        <span class="function">ICheese <span class="title">CreateCheese</span>(<span class="params"></span>)</span>;</span><br><span class="line">        <span class="function">IClams <span class="title">CreateClams</span>(<span class="params"></span>)</span>;</span><br><span class="line">        <span class="function">ISauce <span class="title">CreateSauce</span>(<span class="params"></span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="PizzaStore-cs"><a href="#PizzaStore-cs" class="headerlink" title="PizzaStore.cs"></a>PizzaStore.cs</h6><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">AbtractFactoryPattern.Abstractions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">PizzaStore</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> Pizza <span class="title">OrderPizza</span>(<span class="params"><span class="keyword">string</span> type</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> pizza = CreatePizza(type);</span><br><span class="line">            pizza.Prepare();</span><br><span class="line">            pizza.Bake();</span><br><span class="line">            pizza.Cut();</span><br><span class="line">            pizza.Box();</span><br><span class="line">            <span class="keyword">return</span> pizza;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> Pizza <span class="title">CreatePizza</span>(<span class="params"><span class="keyword">string</span> type</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="Pizza-cs"><a href="#Pizza-cs" class="headerlink" title="Pizza.cs"></a>Pizza.cs</h6><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">AbtractFactoryPattern.Abstractions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">Pizza</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> IDough Dough &#123; <span class="keyword">get</span>; <span class="keyword">protected</span> <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> ISauce Sauce &#123; <span class="keyword">get</span>; <span class="keyword">protected</span> <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> ICheese Cheese &#123; <span class="keyword">get</span>; <span class="keyword">protected</span> <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> IClams Clams &#123; <span class="keyword">get</span>; <span class="keyword">protected</span> <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">Propare</span>(<span class="params"></span>)</span>;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h4>
       
     </div>
 
@@ -522,9 +513,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Net-Core/" rel="tag"># .Net Core</a>
+            <a href="/tags/基础/" rel="tag"># 基础</a>
           
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+            <a href="/tags/C/" rel="tag"># C#</a>
           
         </div>
       
@@ -537,8 +528,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/14/Net-Core-简单工厂和工厂方法模式/" rel="next" title=".Net Core 简单工厂和工厂方法模式">
-                <i class="fa fa-chevron-left"></i> .Net Core 简单工厂和工厂方法模式
+              <a href="/2019/03/30/C#-常用关键字和基础类/" rel="next" title="C#-常用关键字和基础类">
+                <i class="fa fa-chevron-left"></i> C#-常用关键字和基础类
               </a>
             
           </div>
@@ -546,10 +537,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/05/关于毕业设计的整理/" rel="prev" title="关于毕业设计的整理">
-                关于毕业设计的整理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -792,7 +779,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#抽象工厂的定义"><span class="nav-number">1.</span> <span class="nav-text">抽象工厂的定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#工厂方法和抽象工厂的比较"><span class="nav-number">2.</span> <span class="nav-text">工厂方法和抽象工厂的比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Net-Core实现抽象工厂"><span class="nav-number">3.</span> <span class="nav-text">.Net Core实现抽象工厂</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#IGredient-cs"><span class="nav-number">3.1.</span> <span class="nav-text">IGredient.cs</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ICheese-cs"><span class="nav-number">3.2.</span> <span class="nav-text">ICheese.cs</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#IClams-cs"><span class="nav-number">3.3.</span> <span class="nav-text">IClams.cs</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#IDough-cs"><span class="nav-number">3.4.</span> <span class="nav-text">IDough.cs</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ISauce-cs"><span class="nav-number">3.5.</span> <span class="nav-text">ISauce.cs</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#IPizzalngredientFactory-cs"><span class="nav-number">3.6.</span> <span class="nav-text">IPizzalngredientFactory.cs</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PizzaStore-cs"><span class="nav-number">3.7.</span> <span class="nav-text">PizzaStore.cs</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Pizza-cs"><span class="nav-number">3.8.</span> <span class="nav-text">Pizza.cs</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Math类"><span class="nav-number">1.</span> <span class="nav-text">Math类</span></a></li></ol></div>
             
 
           </div>
