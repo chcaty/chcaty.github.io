@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="小猫的代码之旅">
 <meta property="og:description" content="WebSocket是什么WebSocket 是一种在单个TCP连接上进行全双工通讯的协议,是建立在TCP上,且独立的协议.在WebSocket API中,浏览器和服务器只需要完成一次握手,两者之间就可以进行持久性的连接,并进行双向数据传输.为了建立WebSocket连接,浏览器通过Http1.1协议的101StatusCode进行握手">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-20T14:20:47.749Z">
+<meta property="og:updated_time" content="2019-06-25T15:41:38.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Asp.Net Core WebSocket">
 <meta name="twitter:description" content="WebSocket是什么WebSocket 是一种在单个TCP连接上进行全双工通讯的协议,是建立在TCP上,且独立的协议.在WebSocket API中,浏览器和服务器只需要完成一次握手,两者之间就可以进行持久性的连接,并进行双向数据传输.为了建立WebSocket连接,浏览器通过Http1.1协议的101StatusCode进行握手">
@@ -385,12 +385,24 @@
                 
               
 
-              <time title="创建时间：2018-03-20 21:26:28 / 修改时间：22:20:47" itemprop="dateCreated datePublished" datetime="2018-03-20T21:26:28+08:00">2018-03-20</time>
+              <time title="创建时间：2018-03-20 21:26:28" itemprop="dateCreated datePublished" datetime="2018-03-20T21:26:28+08:00">2018-03-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-25 23:41:38" itemprop="dateModified" datetime="2019-06-25T23:41:38+08:00">2019-06-25</time>
               
             
           </span>
@@ -490,7 +502,7 @@
       
 
       
-        <h6 id="WebSocket是什么"><a href="#WebSocket是什么" class="headerlink" title="WebSocket是什么"></a>WebSocket是什么</h6><p>WebSocket 是一种在单个TCP连接上进行全双工通讯的协议,是建立在TCP上,且独立的协议.在WebSocket API中,浏览器和服务器只需要完成一次握手,两者之间就可以进行持久性的连接,并进行双向数据传输.<br>为了建立WebSocket连接,浏览器通过Http1.1协议的101StatusCode进行握手<br><a id="more"></a></p>
+        <h5 id="WebSocket是什么"><a href="#WebSocket是什么" class="headerlink" title="WebSocket是什么"></a>WebSocket是什么</h5><p>WebSocket 是一种在单个TCP连接上进行全双工通讯的协议,是建立在TCP上,且独立的协议.在WebSocket API中,浏览器和服务器只需要完成一次握手,两者之间就可以进行持久性的连接,并进行双向数据传输.<br>为了建立WebSocket连接,浏览器通过Http1.1协议的101StatusCode进行握手<br><a id="more"></a></p>
 <h5 id="在Asp-Net-Core中使用WebSocket"><a href="#在Asp-Net-Core中使用WebSocket" class="headerlink" title="在Asp.Net Core中使用WebSocket"></a>在Asp.Net Core中使用WebSocket</h5><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Configure function</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> Summary</span></span><br><span class="line"><span class="comment">//这里主要是监听WebSocket的请求,然后Invoke Echo 方法进行相关操作.比如,它接收到浏览器请求发来WebSocket的Close命令了.那么在Echo方法直接进行相关的操作</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> Summary</span></span><br><span class="line">app.Use(<span class="keyword">async</span> (context, next) =&gt; </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(context.Request.Path == <span class="string">"/ws"</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(context.WebSockets.IsWebSocketRequest)</span><br><span class="line">        &#123;</span><br><span class="line">            WebSocket webSocket = <span class="keyword">await</span> context.WebSockets.AcceptAsync();</span><br><span class="line">            <span class="keyword">await</span> Echo(context, WebSocket);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            context.Response.StatusCode = <span class="number">400</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Echo function</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> Task <span class="title">Echo</span>(<span class="params">HttpContext context, WebSocket webSocket</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span> * <span class="number">4</span>];</span><br><span class="line"></span><br><span class="line">    WebSocketReceiveResult result = <span class="keyword">await</span> webSocket.ReceiveAsync(<span class="keyword">new</span> ArraySegment&lt;<span class="keyword">byte</span>&gt;(buffer), CancellationToken.None);</span><br><span class="line">    <span class="keyword">while</span>(!result.CloseStatus.HasValue)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">await</span> webSocket.SendAsync(<span class="keyword">new</span> ArraySegment&lt;<span class="keyword">byte</span>&gt;(buffer, <span class="number">0</span>, result.Count), result.MessageType, result.EndOfMessage, CancellationToken.None);</span><br><span class="line"></span><br><span class="line">        result = <span class="keyword">await</span> webSocket.ReceiveAsync(<span class="keyword">new</span> ArraySegment&lt;<span class="keyword">byte</span>&gt;(buffer), CancellationToken.None);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">await</span> webSocket.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, CancellationTaken.None);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改Echo方法中Send方法的buffer修改,设定想要的回馈</span></span><br><span class="line"><span class="keyword">var</span> abuffer = Encoding.ASCII.GetBytes(<span class="string">"Hola, This is robert from cnblogs"</span>);</span><br><span class="line"><span class="keyword">await</span> webSocket.SendAsync(<span class="keyword">new</span> ArraySegment&lt;<span class="keyword">byte</span>&gt;(abuffer, <span class="number">0</span>, abuffer.Length), result.MessageType, result.EndOfMessage, CancellationToken.None);</span><br><span class="line">result = <span class="keyword">await</span> webSocket.ReceiveAsync(<span class="keyword">new</span> ArraySegment&lt;<span class="keyword">byte</span>&gt;(abuffer), CancellationToken.None);</span><br></pre></td></tr></table></figure>
 
       
@@ -617,7 +629,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -735,7 +747,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">35</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -789,7 +805,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#WebSocket是什么"><span class="nav-number">1.</span> <span class="nav-text">WebSocket是什么</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#在Asp-Net-Core中使用WebSocket"><span class="nav-number"></span> <span class="nav-text">在Asp.Net Core中使用WebSocket</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#WebSocket是什么"><span class="nav-number">1.</span> <span class="nav-text">WebSocket是什么</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在Asp-Net-Core中使用WebSocket"><span class="nav-number">2.</span> <span class="nav-text">在Asp.Net Core中使用WebSocket</span></a></li></ol></div>
             
 
           </div>
@@ -824,7 +840,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">181k</span>
+    <span title="站点总字数">183k</span>
   
 
   
@@ -835,7 +851,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">5:01</span>
+    <span title="站点阅读时长">5:05</span>
   
 </div>
 
