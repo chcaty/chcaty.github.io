@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="小猫的代码之旅">
 <meta property="og:description" content="异常处理在程序开发中也是一个比较重要的事,一方面可以避免暴露不该暴露的东西,另一方面也在出现问题时,可以及时的定位到异常发生的位置.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-13T14:36:49.206Z">
+<meta property="og:updated_time" content="2019-07-29T13:58:07.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Asp.Net Core 异常处理">
 <meta name="twitter:description" content="异常处理在程序开发中也是一个比较重要的事,一方面可以避免暴露不该暴露的东西,另一方面也在出现问题时,可以及时的定位到异常发生的位置.">
@@ -385,12 +385,24 @@
                 
               
 
-              <time title="创建时间：2019-07-13 22:34:02 / 修改时间：22:36:49" itemprop="dateCreated datePublished" datetime="2019-07-13T22:34:02+08:00">2019-07-13</time>
+              <time title="创建时间：2019-07-13 22:34:02" itemprop="dateCreated datePublished" datetime="2019-07-13T22:34:02+08:00">2019-07-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-29 21:58:07" itemprop="dateModified" datetime="2019-07-29T21:58:07+08:00">2019-07-29</time>
               
             
           </span>
@@ -517,7 +529,8 @@
 <p>上面特別对 API 的错误进行了处理，当请求 <code>http://localhost:5000/api/*</code> 发生错误时，会回传 JSON 格式的错误。而且把 请求MVC发生的错误 ，改用转址的方式转到 <code>http://localhost:5000/error</code></p>
 <h4 id="UseDeveloperExceptionPage"><a href="#UseDeveloperExceptionPage" class="headerlink" title="UseDeveloperExceptionPage"></a>UseDeveloperExceptionPage</h4><p>UseDeveloperExceptionPage 是Asp.Net Core提供的错误信息页面服务.</p>
 <p><em>Startup.cs</em></p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Startup</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IApplicationBuilder app, IHostingEnvironment env</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 在开发阶段调用Asp.Net Core提供的错误信息页面</span></span><br><span class="line">        <span class="keyword">if</span>(env.IsDevelopment())</span><br><span class="line">        &#123;</span><br><span class="line">            app.UseDeveloperExceptionPage();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            app.UseExceptionHandler(<span class="string">"/error"</span>);    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Startup</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IApplicationBuilder app, IHostingEnvironment env</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 在开发阶段调用Asp.Net Core提供的错误信息页面</span></span><br><span class="line">        <span class="keyword">if</span>(env.IsDevelopment())</span><br><span class="line">        &#123;</span><br><span class="line">            app.UseDeveloperExceptionPage();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            app.UseExceptionHandler(<span class="string">"/error"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -642,7 +655,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -774,7 +787,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">42</span>
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -863,7 +878,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">217k</span>
+    <span title="站点总字数">221k</span>
   
 
   
@@ -874,7 +889,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:02</span>
+    <span title="站点阅读时长">6:08</span>
   
 </div>
 
