@@ -341,6 +341,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2019/06/25/Asp-Net-Core-Url 重写/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="caty">
+      <meta itemprop="description" content=".Net后台开发工程师">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猫的代码之旅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/25/Asp-Net-Core-Url 重写/" class="post-title-link" itemprop="url">Asp.Net Core Url 重写</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-25 23:49:06 / 修改时间：23:54:32" itemprop="dateCreated datePublished" datetime="2019-06-25T23:49:06+08:00">2019-06-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Net-Core/" itemprop="url" rel="index"><span itemprop="name">.Net Core</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/06/25/Asp-Net-Core-Url 重写/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/25/Asp-Net-Core-Url 重写/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="Url重写的引用"><a href="#Url重写的引用" class="headerlink" title="Url重写的引用"></a>Url重写的引用</h4><ul>
+<li>需要引入nuget包 Microsoft.AspNetCore.Rewrite</li>
+<li>在Startup.cs 建立Url重写规则,并注册Url重写中间件<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span>  <span class="title">Startup</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IApplicationBuilder app</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> rewrite = <span class="keyword">new</span> RewriteOptions()</span><br><span class="line">            <span class="comment">//Url重写</span></span><br><span class="line">            .AddRewrite(<span class="string">"error.html"</span>, <span class="string">"home/error"</span>, skipRemainingRules: <span class="literal">true</span>);</span><br><span class="line">            <span class="comment">//Url重定向</span></span><br><span class="line">            .AddRedirect(<span class="string">"main"</span>, <span class="string">"home/index"</span>);</span><br><span class="line">        app.UseRewriter(rewrite);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/06/25/Asp-Net-Core-Url 重写/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2019/06/25/Asp-Net-Core-中间件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2262,239 +2474,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2019/03/26/类型基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="caty">
-      <meta itemprop="description" content=".Net后台开发工程师">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猫的代码之旅">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/03/26/类型基础/" class="post-title-link" itemprop="url">类型基础</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-26 21:26:08 / 修改时间：23:13:16" itemprop="dateCreated datePublished" datetime="2019-03-26T21:26:08+08:00">2019-03-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/03/26/类型基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/26/类型基础/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">1.3k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="所有类型都从System-Object-派生"><a href="#所有类型都从System-Object-派生" class="headerlink" title="所有类型都从System.Object 派生"></a>所有类型都从System.Object 派生</h3><h4 id="System-Object-公共实例方法"><a href="#System-Object-公共实例方法" class="headerlink" title="System.Object 公共实例方法"></a>System.Object 公共实例方法</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">公共方法</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Equals</td>
-<td style="text-align:center">判断两个对象是否具有相同的值</td>
-</tr>
-<tr>
-<td style="text-align:center">GetHashCode</td>
-<td style="text-align:center">返回对象的值的哈希码</td>
-</tr>
-<tr>
-<td style="text-align:center">ToString</td>
-<td style="text-align:center">默认返回类型的完整名称,常被重写用于返回对象状态表示的String对象</td>
-</tr>
-<tr>
-<td style="text-align:center">ToString</td>
-<td style="text-align:center">返回调用对象的确切类型</td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/26/类型基础/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2543,7 +2522,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2681,7 +2660,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">45</span>
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2753,7 +2734,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">226k</span>
+    <span title="站点总字数">229k</span>
   
 
   
@@ -2764,7 +2745,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:17</span>
+    <span title="站点阅读时长">6:22</span>
   
 </div>
 
