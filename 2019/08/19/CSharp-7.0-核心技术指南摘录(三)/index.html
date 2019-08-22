@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/header.jpg?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/header.jpg?v=7.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/header.jpg?v=7.0.1">
+
+
+  <link rel="mask-icon" href="/images/header.jpg?v=7.0.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="解构器一个解构器就像构造器的反过程:构造器使用若干值作为参数,并且将它们赋值给字段;而解构器则相反将字段反向赋值给若干变量">
+<meta name="keywords" content="C#,摘录,解构器,委托">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSharp 7.0 核心技术指南摘录(三)">
+<meta property="og:url" content="http://blog.chcaty.cn/2019/08/19/CSharp-7.0-核心技术指南摘录(三)/index.html">
+<meta property="og:site_name" content="小猫的代码之旅">
+<meta property="og:description" content="解构器一个解构器就像构造器的反过程:构造器使用若干值作为参数,并且将它们赋值给字段;而解构器则相反将字段反向赋值给若干变量">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-22T15:41:59.026Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSharp 7.0 核心技术指南摘录(三)">
+<meta name="twitter:description" content="解构器一个解构器就像构造器的反过程:构造器使用若干值作为参数,并且将它们赋值给字段;而解构器则相反将字段反向赋值给若干变量">
+
+
+
+
+
+
+  <link rel="canonical" href="http://blog.chcaty.cn/2019/08/19/CSharp-7.0-核心技术指南摘录(三)/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>CSharp 7.0 核心技术指南摘录(三) | 小猫的代码之旅</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小猫的代码之旅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2019/08/19/CSharp-7.0-核心技术指南摘录(三)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="caty">
+      <meta itemprop="description" content=".Net后台开发工程师">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猫的代码之旅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSharp 7.0 核心技术指南摘录(三)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-19 23:14:58" itemprop="dateCreated datePublished" datetime="2019-08-19T23:14:58+08:00">2019-08-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-22 23:41:59" itemprop="dateModified" datetime="2019-08-22T23:41:59+08:00">2019-08-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/08/19/CSharp-7.0-核心技术指南摘录(三)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/19/CSharp-7.0-核心技术指南摘录(三)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">11 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="解构器"><a href="#解构器" class="headerlink" title="解构器"></a>解构器</h3><p>一个解构器就像构造器的反过程:构造器使用若干值作为参数,并且将它们赋值给字段;而解构器则相反将字段反向赋值给若干变量<br><a id="more"></a><br>解构方法的名字必须为Deconstruct,并且拥有一个或多个out参数</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Rectangle</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">readonly</span> <span class="keyword">float</span> Width, Height;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Rectangle</span>(<span class="params"><span class="keyword">float</span> width, <span class="keyword">float</span> height</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Width = width;</span><br><span class="line">        Height = height;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Deconstruct</span>(<span class="params"><span class="keyword">out</span> <span class="keyword">float</span> width, <span class="keyword">out</span> <span class="keyword">float</span> height</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        width = Width;</span><br><span class="line">        height = Height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用解造器,语法如下</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rect = <span class="keyword">new</span> Rectangle(<span class="number">3</span> , <span class="number">4</span>);</span><br><span class="line">(<span class="keyword">float</span> width, <span class="keyword">float</span> height) = rect;</span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> width, height;</span><br><span class="line">rect.Deconstruct(<span class="keyword">out</span> width, <span class="keyword">out</span> height);</span><br><span class="line"><span class="comment">// rect.Deconstruct(out var width, out var height);</span></span><br></pre></td></tr></table></figure>
+<p>解构调用允许隐式类型推断,可简写为</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">var</span> width, <span class="keyword">var</span> height) = rect;</span><br><span class="line"><span class="comment">// var (width, height) = rect;</span></span><br></pre></td></tr></table></figure>
+<p>如果解构中的变量已经定义过了,那么可以忽略类型声明</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> width, height;</span><br><span class="line">(width, height) = rect;</span><br></pre></td></tr></table></figure>
+<h3 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h3><p>委托是一种知道如何调用方法的对象<br>委托类型定义了一个委托实例可以调用的方法,具体来说,它定义了方法的返回类型和参数类型.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">delegate</span> <span class="keyword">int</span> <span class="title">Transformer</span>(<span class="params"><span class="keyword">int</span> x</span>)</span>;</span><br><span class="line">clasee Test</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Transformer t = Square;</span><br><span class="line">        <span class="comment">// Transformer t = new Transformer(Square);</span></span><br><span class="line">        <span class="keyword">int</span> result = t(<span class="number">3</span>);</span><br><span class="line">        <span class="comment">// int result = t.Invoke(3);</span></span><br><span class="line">        Console.WriteLine(result);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Square</span>(<span class="params"><span class="keyword">int</span> x</span>) </span>=&gt; x * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>委托实例字面上是调用者的代理:调用者调用委托,而委托调用目标方法.这种间接调用方式可以将调用者和目标方法解耦.</p>
+<h4 id="用委托书写插件方法"><a href="#用委托书写插件方法" class="headerlink" title="用委托书写插件方法"></a>用委托书写插件方法</h4><p>委托变量可以在运行时指定一个目标方法,这个特性可用于编写插件方法,下面的例子中有一个名为Transform的公共方法,它对整数数组的每一个元素进行变换.Transfornm方法接受一个委托参数并以此为插件方法执行变换操作</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">int</span> <span class="title">Transformer</span> (<span class="params"><span class="keyword">int</span> x</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Util</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Transform</span>(<span class="params"><span class="keyword">int</span>[] values, Transformer t</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; values.Lenght; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            values[i] = t(values[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] values = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">        Util.Transform(values, Square);</span><br><span class="line">        <span class="keyword">foreach</span>( <span class="keyword">int</span> i <span class="keyword">in</span> values)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(i+<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Square</span>(<span class="params"><span class="keyword">int</span> x</span>) </span>=&gt; x * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="多播委托"><a href="#多播委托" class="headerlink" title="多播委托"></a>多播委托</h4><p>所有的委托实例都拥有多播能力,这意味着一个委托实例可以引用一个目标方法,也可以引用一组目标方法.委托可以使用 + 和 += 联结多个委托实例, - 和 -= 会从左侧委托操作数上将右侧委托数删除.<br>委托是不可变的,因此调用 += 和 -= 的实质是创建一个新的委托实例,并把它赋值给已有变量.<br>若方法的执行时间很长,且该方法定时调用一个委托像调用者报告进程的执行情况.例如,在以下代码中,HardWord 方法通过调用 ProgressReporter 委托参数报告执行进度</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">PeogressReporter</span> (<span class="params"><span class="keyword">int</span> percentComplete</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Util</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">HardWork</span> (<span class="params">ProgressReporter p</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            p(i * <span class="number">10</span>);</span><br><span class="line">            System.Threading.Thread.Sleep(<span class="number">100</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了监视进度,在Main方法中创建了一个多播委托实例p,这样就可以通过两个独立的方法监视执行进度</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ProgressReporter p = WriteProgressToConsole;</span><br><span class="line">        p += WriteProgressToFile;</span><br><span class="line">        Util.HardWork(p);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">WriteProgressToConsole</span>(<span class="params"><span class="keyword">int</span> percentComplete</span>) </span>=&gt; Console.WriteLine(percentComplete);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">WriteProgressToFile</span>(<span class="params"><span class="keyword">int</span> percentComplete</span>) </span>=&gt; System.IO.File.WriteAllText(<span class="string">"process.txt"</span>, percentComplete.ToString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="实例目标方法和静态目标方法"><a href="#实例目标方法和静态目标方法" class="headerlink" title="实例目标方法和静态目标方法"></a>实例目标方法和静态目标方法</h4><p>将一个实例方法赋值给委托对象时,后者不但要维护方法的引用,还需要维护方法所属的实例的引用.System.Delegate 类的 Target 属性代表这个实例(如果委托引用的是一个静态方法,则该属性值为null).</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">ProgressReporter</span> (<span class="params"><span class="keyword">int</span> percentComplete</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">T</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        X x = <span class="keyword">new</span> X();</span><br><span class="line">        ProgressReporter p = x.InstanceProgress;</span><br><span class="line">        p(<span class="number">99</span>);</span><br><span class="line">        Console.WriteLine(p.Target = x);</span><br><span class="line">        Console.WriteLine(p.Method);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">X</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">InstanceProgress</span>(<span class="params"><span class="keyword">int</span> percentComplete</span>) </span>=&gt; Console.WriteLine(percentComplete);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="泛型委托类型"><a href="#泛型委托类型" class="headerlink" title="泛型委托类型"></a>泛型委托类型</h4><p>委托类型可以包含泛型类型参数.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Util</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> Transform&lt;T&gt; (T[] values, Transformer&lt;T&gt; t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; values.Lenght; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            values[i] = t(values[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] values = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">        Util.Transform(values, Square);</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="keyword">int</span> i <span class="keyword">in</span> values)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(i + <span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Square</span>(<span class="params"><span class="keyword">int</span> x</span>) </span>=&gt; x * x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Func-和-Action-委托"><a href="#Func-和-Action-委托" class="headerlink" title="Func 和 Action 委托"></a>Func 和 Action 委托</h4><p>有了泛型委托,我们就可以定义出一些非常通用的小型委托类型,它们可以具有任意的返回类型和(合理的)任意数目的参数.它们就是定义在 System 命名空间下的 Func 和 Action 委托</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delegate</span> TResult Func &lt;<span class="keyword">out</span> TResult&gt; ();</span><br><span class="line"><span class="keyword">delegate</span> TResult Func &lt;<span class="keyword">in</span> T, <span class="keyword">out</span> TResult&gt; (T arg);</span><br><span class="line"><span class="keyword">delegate</span> TResult Func &lt;<span class="keyword">in</span> T1, <span class="keyword">in</span> T2, <span class="keyword">out</span> TResult&gt; (T1 arg1, T2 arg2);</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">Action</span> (<span class="params"></span>)</span>;</span><br><span class="line"><span class="keyword">delegate</span> <span class="keyword">void</span> Action &lt;<span class="keyword">in</span> T&gt; (T arg);</span><br><span class="line"><span class="keyword">delegate</span> <span class="keyword">void</span> Action &lt;<span class="keyword">in</span> T1, <span class="keyword">in</span> T2&gt; (T1 arg1, T2 arg2);</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h4 id="委托和接口"><a href="#委托和接口" class="headerlink" title="委托和接口"></a>委托和接口</h4><p>能用委托解决的问题,都可以用接口解决</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ITransformer</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Transform</span> (<span class="params"><span class="keyword">int</span> x</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Util</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">TransformAll</span> (<span class="params"><span class="keyword">int</span>[] values, ITransformer t</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; values.Lenght; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            values[i] = t.Transform(values[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Squarer</span> : <span class="title">ITransformer</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Transform</span> (<span class="params"><span class="keyword">int</span> x</span>) </span>=&gt; x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] values = &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">    Util.TransforAll(values, <span class="keyword">new</span> Squarer());</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="keyword">int</span> i <span class="keyword">in</span> values)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(i + <span class="string">" "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果以下一个或多个条件成立,委托可能是比接口更好的选择</p>
+<ul>
+<li>接口内仅定义了一个方法</li>
+<li>需要多播能力</li>
+<li>订阅者需要多次实现接口</li>
+</ul>
+<h4 id="委托的兼容性"><a href="#委托的兼容性" class="headerlink" title="委托的兼容性"></a>委托的兼容性</h4><h5 id="类型的兼容性"><a href="#类型的兼容性" class="headerlink" title="类型的兼容性"></a>类型的兼容性</h5><p>即使签名相似,委托类型也互不兼容</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">D1</span>(<span class="params"></span>)</span>;</span><br><span class="line"><span class="function"><span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">D2</span>(<span class="params"></span>)</span>;</span><br><span class="line"></span><br><span class="line">D1 d1 = Method;</span><br><span class="line">D2 d2 = d1;     <span class="comment">//Compile-time error</span></span><br></pre></td></tr></table></figure>
+<p>但是允许下面的写法</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D2 d2 = <span class="keyword">new</span> D2 (d1);</span><br></pre></td></tr></table></figure>
+<p>如果委托实例指向相同的目标方法,则认为它们是相等的<br>如果多播委托按照相同的顺序引用相同的方法,则认为它们是相等的</p>
+<h5 id="参数的兼容性"><a href="#参数的兼容性" class="headerlink" title="参数的兼容性"></a>参数的兼容性</h5><p>当调用方法时,可以给方法的参数提供更加特定的变量类型,这是正常的多态行为.基于同样的原因,委托也可以有比它目标方法参数类型更加具体的参数类型,这称为逆变.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">StringAction</span> (<span class="params"><span class="keyword">string</span> s</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        StringAction sa = <span class="keyword">new</span> StringAction(ActOnObject);</span><br><span class="line">        sa(<span class="string">"hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ActOnObject</span> (<span class="params"><span class="keyword">object</span> o</span>) </span>=&gt; Console.WriteLine(o);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="返回类型的兼容性"><a href="#返回类型的兼容性" class="headerlink" title="返回类型的兼容性"></a>返回类型的兼容性</h5><p>调用方法时可能得到比请求类型更加特定的返回值类型,这也是正常的多态行为.基于同样的原因,委托的目标方法可能返回比委托声明的返回值类型更加特定的返回值类型,这称为协变.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">delegate</span> <span class="keyword">object</span> <span class="title">ObjectRetriever</span>(<span class="params"></span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        ObjectRetriever o = <span class="keyword">new</span> ObjectRetriver (RetrieveString);</span><br><span class="line">        <span class="keyword">object</span> result = o();</span><br><span class="line">        Console.WriteLine(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">string</span> <span class="title">RetrieveString</span>(<span class="params"></span>) </span>=&gt; <span class="string">"hello"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="泛型委托类型的参数协变"><a href="#泛型委托类型的参数协变" class="headerlink" title="泛型委托类型的参数协变"></a>泛型委托类型的参数协变</h5><p>如果我们要定义一个泛型委托类型,那么最好参考如下的准则</p>
+<ul>
+<li>将只用于返回值类型的类型参数标记为协变(out)</li>
+<li>将只用于参数的任意类型标记为逆变(in)</li>
+</ul>
+<p>这样可以依照类型的继承关系自然地进行类型转换.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delegate</span> TResult Func&lt;<span class="keyword">out</span> TResult&gt;();</span><br><span class="line">Func&lt;<span class="keyword">string</span>&gt; x = ...;</span><br><span class="line">Func&lt;<span class="keyword">object</span>&gt; y = x;</span><br><span class="line"></span><br><span class="line"><span class="keyword">delegate</span> <span class="keyword">void</span> Action&lt;<span class="keyword">in</span> T&gt; (T arg);</span><br><span class="line">Action&lt;<span class="keyword">object</span>&gt; x = ...;</span><br><span class="line">Action&lt;<span class="keyword">string</span>&gt; y = x;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C#</a>
+          
+            <a href="/tags/摘录/" rel="tag"># 摘录</a>
+          
+            <a href="/tags/解构器/" rel="tag"># 解构器</a>
+          
+            <a href="/tags/委托/" rel="tag"># 委托</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/16/CSharp-7.0-核心技术指南摘录(二)/" rel="next" title="C# 7.0 核心技术指南摘录(二)">
+                <i class="fa fa-chevron-left"></i> C# 7.0 核心技术指南摘录(二)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="caty">
+            
+              <p class="site-author-name" itemprop="name">caty</p>
+              <div class="site-description motion-element" itemprop="description">.Net后台开发工程师</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.wayneshao.com/" title="http://blog.wayneshao.com/" rel="noopener" target="_blank">玮仔</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://yumengjing.github.io/" title="https://yumengjing.github.io/" rel="noopener" target="_blank">羽梦</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#解构器"><span class="nav-number">1.</span> <span class="nav-text">解构器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#委托"><span class="nav-number">2.</span> <span class="nav-text">委托</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用委托书写插件方法"><span class="nav-number">2.1.</span> <span class="nav-text">用委托书写插件方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多播委托"><span class="nav-number">2.2.</span> <span class="nav-text">多播委托</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例目标方法和静态目标方法"><span class="nav-number">2.3.</span> <span class="nav-text">实例目标方法和静态目标方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型委托类型"><span class="nav-number">2.4.</span> <span class="nav-text">泛型委托类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Func-和-Action-委托"><span class="nav-number">2.5.</span> <span class="nav-text">Func 和 Action 委托</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#委托和接口"><span class="nav-number">2.6.</span> <span class="nav-text">委托和接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#委托的兼容性"><span class="nav-number">2.7.</span> <span class="nav-text">委托的兼容性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#类型的兼容性"><span class="nav-number">2.7.1.</span> <span class="nav-text">类型的兼容性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数的兼容性"><span class="nav-number">2.7.2.</span> <span class="nav-text">参数的兼容性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#返回类型的兼容性"><span class="nav-number">2.7.3.</span> <span class="nav-text">返回类型的兼容性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#泛型委托类型的参数协变"><span class="nav-number">2.7.4.</span> <span class="nav-text">泛型委托类型的参数协变</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">caty</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">238k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">6:36</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'dFA9ClcCkRAGUiP9iL4wTBC3-gzGzoHsz',
+    appKey: 'AKj5G4MYwyK3sUd7d3wAsNyo',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+</script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
