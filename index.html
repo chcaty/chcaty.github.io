@@ -341,6 +341,291 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2019/08/26/CSharp-7.0-核心技术指南摘录(四)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="caty">
+      <meta itemprop="description" content=".Net后台开发工程师">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小猫的代码之旅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/26/CSharp-7.0-核心技术指南摘录(四)/" class="post-title-link" itemprop="url">CSharp 7.0 核心技术指南摘录(四)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-26 23:14:58" itemprop="dateCreated datePublished" datetime="2019-08-26T23:14:58+08:00">2019-08-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-30 00:06:06" itemprop="dateModified" datetime="2019-08-30T00:06:06+08:00">2019-08-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/08/26/CSharp-7.0-核心技术指南摘录(四)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/26/CSharp-7.0-核心技术指南摘录(四)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="常用的异常类型"><a href="#常用的异常类型" class="headerlink" title="常用的异常类型"></a>常用的异常类型</h3><p>以下所列出的异常类型在 CLR 和 .NET Framework 中广泛使用,可以在程序中抛出这些异常或将其作为基类型来派生自定义的异常类型</p>
+<ul>
+<li><p>System.ArgumentException</p>
+<p>  当使用不恰当的函数参数调用函数时抛出.这通常表明应用程序有缺陷</p>
+</li>
+<li><p>System.ArgumentNullException</p>
+<p>  ArgumentException 的子类.它在函数的参数(意外的)为null时抛出</p>
+</li>
+<li><p>System.ArgumentOutOfRangeException</p>
+<p>  ArgumentException 的子类.当(通常是数字)参数太大或者太小的时候抛出.例如:当向只能接受正数的函数传递负数时抛出.</p>
+</li>
+<li><p>System.InvalidOperationException</p>
+<p>  当不论参数值如何,对象的状态无法使方法成功执行的时候抛出.例如:读取未打开的文件或在列表对象已修改的情况下用枚举器访问其下一个元素.</p>
+</li>
+<li><p>System.NotSupportedException</p>
+<p>  该异常抛出表示不支持特定的功能.例如:在一个 IsReadOnly 为 true 的集合上调用 Add 方法.</p>
+</li>
+<li><p>System.NotImplementedException</p>
+<p>  表示特定的函数还没有实现</p>
+</li>
+<li><p>System.ObjectDisposedException</p>
+<p>  当函数调用的对象已被销毁时抛出</p>
+</li>
+<li><p>NullReferenceException</p>
+<p>  当一个对象的值为null而访问其成员时抛出</p>
+</li>
+</ul>
+<h3 id="运算符函数"><a href="#运算符函数" class="headerlink" title="运算符函数"></a>运算符函数</h3><p>运算符是通过声明运算符函数进行重载的.运算符函数具有以下规则</p>
+<ul>
+<li><p>函数名为 operator 关键字跟上运算符符号</p>
+</li>
+<li><p>运算符函数必须是 static 和 public 的</p>
+</li>
+<li><p>运算符函数的参数即操作数</p>
+</li>
+<li><p>运算符函数的返回类型表示表达式的结果</p>
+</li>
+<li><p>运算符函数电费操作数中至少有一个类型和声明运算符函数的类型是一致的</p>
+</li>
+</ul>
+<p>在以下例子中,我们用名为 Note 的结构体表示音符,并重载其 + 运算符</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> Note</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="keyword">value</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Note</span> (<span class="params"><span class="keyword">int</span> semitonesFromA</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">value</span> = semitonesFromA;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Note <span class="keyword">operator</span> + (Note x, <span class="keyword">int</span> semitones)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Note(x.<span class="keyword">value</span> + semitones);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// public static Note operator + (Note x, int semitones) =&gt; new Note (x.value + semitones);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个重载令 Note 可以和 int 相加</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Note B = <span class="keyword">new</span> Note(<span class="number">2</span>);</span><br><span class="line">Note CSharp = B + <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>重载运算符会自动支持相应的复合赋值运算符.在上例中,因为我们重载了 + 号,所以自然就可以使用 += 了</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSharp += <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="重载等号和比较运算符"><a href="#重载等号和比较运算符" class="headerlink" title="重载等号和比较运算符"></a>重载等号和比较运算符</h3><p>通常在我们使用结构体(或类,但不常见)时需要重载等号和比较运算符.重载等号和比较运算符有一些特殊的规则和要求,总结如下:</p>
+<ul>
+<li><p>成对重载: C# 编译器要求逻辑上成对的运算符必须同时定义.这些运算符包括(==,!=),(&lt;,&gt;)和(&lt;=,&gt;=)</p>
+</li>
+<li><p>Equals 和 GetHashCode: 在大多数情况下,如果重载了(==)和(!=)运算符,则通常也需要重载 object 中定义的 Equals 和 GetHashCode 方法.使之具有合理的行为.如果没有按要求重载,则 C# 编译器会发出警告</p>
+</li>
+<li><p>IComparable 和 IComparable&lt; T &gt;: 如果重载了(&lt;,&gt;) 和 (&lt;=,&gt;=) 运算符,那么还应当实现 IComparable 和 IComparable&lt; T &gt; 接口</p>
+</li>
+</ul>
+<h3 id="自定义隐式和自定义显式"><a href="#自定义隐式和自定义显式" class="headerlink" title="自定义隐式和自定义显式"></a>自定义隐式和自定义显式</h3><p>隐式和显式转换也是可以重载的运算符.这些转换经过重载后,一般能使强相关的类型(例如数字)之间的转换变得更加简明自然.</p>
+<p>如果要在弱相关的类型之间进行转换,则更适合采用以下方式</p>
+<ul>
+<li><p>编写一个以转换类型为参数的构造器</p>
+</li>
+<li><p>编写(静态的)ToXXX 和 FromXXX 方法进行类型转换</p>
+</li>
+</ul>
+<p>在以下例子中,我们定义了 Note 类型和 double 之类的转换规则</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">implicit</span> <span class="keyword">operator</span> <span class="title">double</span> (<span class="params">Note x</span>) </span>=&gt; <span class="number">440</span> * Math.Pow(<span class="number">2</span>, (<span class="keyword">double</span>) x.<span class="keyword">value</span> / <span class="number">12</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">Note</span>(<span class="params"><span class="keyword">double</span> x</span>) </span>=&gt; <span class="keyword">new</span> Note((<span class="keyword">int</span>) (<span class="number">0.5</span> + <span class="number">12</span> * Math.Log(x/<span class="number">440</span>) / Math.Log(<span class="number">2</span>)));</span><br><span class="line"></span><br><span class="line">Note n = (Note) <span class="number">554.37</span>;</span><br><span class="line"><span class="keyword">double</span> x = n;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>PS: as 和 is 运算符会忽略自定义转换</p>
+</blockquote>
+<h3 id="重载-true-和-false"><a href="#重载-true-和-false" class="headerlink" title="重载 true 和 false"></a>重载 true 和 false</h3><p>true 和 false 运算符只会在那些本身有布尔语义但无法转换为 bool 的类型中重载.例如,一个类型实现了三个状态逻辑,通过重载 true 和 false 运算符,这个类型就可以无缝地和以下条件语句以及运算符一起使用了: if, do, while, for, &amp;&amp;, || 和 ?:.System.Data.SqlTypes.SqlBoolean 结构体就提供了这个功能.</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SqlBoolean a = SqlBoolean.Null;</span><br><span class="line"><span class="keyword">if</span>(a)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">"True"</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (!a)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">"False"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(<span class="string">"Null"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出为Null</span></span><br></pre></td></tr></table></figure>
+<p>下面代码重新实现了 SqlBoolean 中关于 true 和 false运算符的一部分代码</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> SqlBoolean</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="keyword">operator</span> <span class="title">true</span> (<span class="params">SqlBoolean x</span>) </span>=&gt; x.m_value == True.m_value;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="keyword">operator</span> <span class="title">false</span> (<span class="params">SqlBoolean x</span>) </span>=&gt; x.m_value == False.m_value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SqlBoolean <span class="keyword">operator</span> ! (SqlBoolean x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(x.m_value == Null.m_value) <span class="keyword">return</span> Null;</span><br><span class="line">        <span class="keyword">if</span>(x.m_value == False.m_value) <span class="keyword">return</span> True;</span><br><span class="line">        <span class="keyword">return</span> False;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> SqlBoolean Null = <span class="keyword">new</span> SqlBoolean(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> SqlBoolean False = <span class="keyword">new</span> SqlBoolean(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">readonly</span> SqlBoolean True = <span class="keyword">new</span> SqlBoolean(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SqlBoolean</span> (<span class="params"><span class="keyword">byte</span> <span class="keyword">value</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        m_value = <span class="keyword">value</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span> m_value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2019/08/19/CSharp-7.0-核心技术指南摘录(三)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2246,226 +2531,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.chcaty.cn/2019/07/03/Asp-Net-Core-过滤器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="caty">
-      <meta itemprop="description" content=".Net后台开发工程师">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小猫的代码之旅">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/03/Asp-Net-Core-过滤器/" class="post-title-link" itemprop="url">Asp.Net Core 过滤器</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-03 23:52:10" itemprop="dateCreated datePublished" datetime="2019-07-03T23:52:10+08:00">2019-07-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-09 23:56:00" itemprop="dateModified" datetime="2019-07-09T23:56:00+08:00">2019-07-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Net-Core/" itemprop="url" rel="index"><span itemprop="name">.Net Core</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/07/03/Asp-Net-Core-过滤器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/03/Asp-Net-Core-过滤器/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">5.1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">9 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="Filter-简介"><a href="#Filter-简介" class="headerlink" title="Filter 简介"></a>Filter 简介</h4><p>Filter的作用是在Action执行前或执行后做一些加工处理.跟中间件类似,但执行的顺序略有不同.把Filter用好了,可以减少代码量和提高执行效率.<br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/03/Asp-Net-Core-过滤器/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2514,7 +2579,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2656,7 +2721,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">47</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2728,7 +2797,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">238k</span>
+    <span title="站点总字数">241k</span>
   
 
   
@@ -2739,7 +2808,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6:36</span>
+    <span title="站点阅读时长">6:42</span>
   
 </div>
 
